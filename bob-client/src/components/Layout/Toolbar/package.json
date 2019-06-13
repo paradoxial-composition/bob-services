@@ -1,0 +1,5 @@
+{
+	"name": "Toolbar-container",
+	"version": "0.0.1",
+	"main": "./ToolbarContainer.js"
+}

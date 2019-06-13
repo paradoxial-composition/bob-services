@@ -1,0 +1,5 @@
+{
+	"name": "Jobs-container",
+	"version": "0.0.1",
+	"main": "./JobsContainer.js"
+}

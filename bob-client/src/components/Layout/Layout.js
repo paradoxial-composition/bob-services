@@ -8,7 +8,7 @@ import Jobs from '../Asks';
 import Profil from '../Profil';
 const { Header, Sider, Content } = Layout;
 
-let _Layout = () => {
+let _Layout = ({children}) => {
 	let [collapsed, setCollapsed] = useState(false);
 	let [visible, setVisible] = useState(false);
 
@@ -39,7 +39,7 @@ let _Layout = () => {
 				</Drawer>
 
 				<Content>
-					<Jobs />
+					{children}
 				</Content>
 			</Layout>
 

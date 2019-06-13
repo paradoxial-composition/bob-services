@@ -5,14 +5,17 @@ let SideBarContainer = (props) => {
 	let methods = {
 		componentItems: {
 			dashboard: {
+				path: '/',
 				label: 'Acceuil',
 				icon: 'user'
 			},
 			myAsks: {
+				path: 'asks',
 				label: 'Mes Demmandes',
 				icon: 'user'
 			},
 			myJobs: {
+				path: 'jobs',
 				label: 'Mes Reponses',
 				icon: 'user'
 			},

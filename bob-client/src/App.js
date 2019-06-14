@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
 import { BrowserRouter } from 'react-router-dom';
 import RouterView from './router';
@@ -10,12 +10,10 @@ window.flash = (message, type="success") => Bus.emit('flash', ({message, type}))
 function App() {
   return (
     <div className="App">
-        <div>
-          <Flash />
-          <BrowserRouter>
-            <RouterView></RouterView>
-          </BrowserRouter>
-        </div>
+      <Flash />
+      <BrowserRouter>
+        <RouterView></RouterView>
+      </BrowserRouter>
     </div>
   );
 }

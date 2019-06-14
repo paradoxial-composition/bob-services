@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import {Menu, Icon} from 'antd';
 
 let SideBar = ({componentItems, setVisible}) => {
-
-	return (
-		<div className="logo" />,
-		<Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{ textAlign: 'left'}}>
+	return [
+		<div key="logo" className="logo" />,
+		<Menu key="menu" theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{ textAlign: 'left'}}>
 			<Menu.Item key="1">
 				<Link to={componentItems.dashboard.path} />
 				<Icon type={componentItems.dashboard.icon} />
@@ -28,7 +27,7 @@ let SideBar = ({componentItems, setVisible}) => {
 				<span>{componentItems.profil.label}</span>
 			</Menu.Item>
 		</Menu>
-		);
+	];
 }
 
 export default SideBar;

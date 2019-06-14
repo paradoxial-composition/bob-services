@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import './Layout.scss';
 import { Layout, Drawer} from 'antd';
-import _SideBar from './SideBar';
-import _Toolbar from './Toolbar';
-import Dashboard from '../Dashboard';
-import Jobs from '../Asks';
+import SideBar from './SideBar';
+import Toolbar from './Toolbar';
 import Profil from '../Profil';
 const { Header, Sider, Content } = Layout;
 
@@ -19,12 +17,12 @@ let _Layout = ({children}) => {
 	return (
 		<Layout>
 			<Sider trigger={null} collapsible collapsed={collapsed}>
-				<_SideBar setVisible={setVisible}/>
+				<SideBar setVisible={setVisible}/>
 			</Sider>
 
 			<Layout>
 				<Header style={{ background: '#fff', padding: 0 }}>
-					<_Toolbar toggle={toggle} collapsed={collapsed}/>
+					<Toolbar toggle={toggle} collapsed={collapsed}/>
 				</Header>
 				
 				<Drawer
@@ -38,7 +36,15 @@ let _Layout = ({children}) => {
 					<Profil />
 				</Drawer>
 
-				<Content>
+				<Content
+					className="LayoutContent"
+            style={{
+              margin: '24px 16px',
+              padding: 24,
+              background: '#fff',
+              minHeight: 280,
+            }}
+          >
 					{children}
 				</Content>
 			</Layout>

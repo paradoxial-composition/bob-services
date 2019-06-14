@@ -1,26 +1,40 @@
 import React from 'react';
 import './Jobs.scss';
-import {Card} from 'antd';
+import {Card, Col, Row, Divider} from 'antd';
 
 let Jobs = ({componentItems, services}) => {
 
-	let jobs = []
+	let jobs = [];
+	let colGris = {
+		xxl: 6,
+		xl: 6,
+		lg: 8,
+		md: 8,
+		ms: 12
+	}
 	services.map((item, index) => {
 		jobs.push(
-			<Card key={index} style={{ with: 200}}>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.activity} <spacer/> {item.activity}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.creationDate} <spacer/> {item.creationDate}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.user} <spacer/> {item.userId}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.description} <spacer/> {item.description}</label></div>
+			<Col {...colGris}>
+				<Card key={index}>
+					<p>{componentItems.cardItems.activity} <spacer/> <b>{item.activity}</b></p>
+					<p>{componentItems.cardItems.creationDate} <spacer/> <b>{item.creationDate}</b></p>
+					<p>{componentItems.cardItems.user} <spacer/> <b>{item.userId}</b></p>
+					<p>{componentItems.cardItems.description} <spacer/> <b>{item.description}</b></p>
 				</Card>
+			</Col>
 		)
 	})
 	return (
 			<div>
-				<h3>{componentItems.title}</h3>
-				<div style={{ display: 'flex' }}>
+				<h2>{componentItems.title}</h2>
+				<Row>
+					<Col offset={10} span={4}>
+						<Divider />
+					</Col>
+				</Row>
+				<Row gutter={24} type="flex" justify="start">
 					{jobs}
-				</div>
+				</Row>
 			</div>
 		);
 }

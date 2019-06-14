@@ -1,10 +1,10 @@
 import Service from '../Service';
 let mongoose = require('mongoose')
-let Users = mongoose.model('Users')
+let ServiceUnits = mongoose.model('ServiceUnits')
 
 // let axios = require('axios')
 
-export default class loginService extends Service {
+export default class serviceUnitsService extends Service {
 
 	constructor({req, res}) {
 		super({req, res});
@@ -12,12 +12,12 @@ export default class loginService extends Service {
 
 	async handle() {
 
-		Users.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ] }, function (err, user) {
+		ServiceUnits.find({}, function (err, usnitServices) {
 			if (err) {
 				res.send(err)
 			} else {
 				res.status(200)
-				res.json(user)
+				res.json(usnitServices)
 			}
 		})
 

@@ -18,7 +18,7 @@ class DB {
             port: 27017,
             user: 'root',
             password: '',
-            database: 'test',
+            database: 'bob-services',
             host: 'localhost',
             options:  { useNewUrlParser: true }
         },{

@@ -1,24 +1,23 @@
 import Service from '../Service';
 let mongoose = require('mongoose')
-let Users = mongoose.model('Users')
+let ServiceUnits = mongoose.model('ServiceUnits')
 
 // let axios = require('axios')
 
-export default class loginService extends Service {
+export default class addServiceUnitsService extends Service {
 
 	constructor({req, res}) {
 		super({req, res});
 	}
 
 	async handle() {
-		// instruction
-		
-		let newUser = new User(req.body)
-			newUser.save(function (err, user) {
+
+		let newService = new User(req.body)
+			newService.save(function (err, serviceUnit) {
 				if (err) {
 					res.send(err)
 				} else {
-					res.json(user)
+					res.json(serviceUnit)
 				}
 			})
 

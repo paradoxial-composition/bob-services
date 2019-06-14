@@ -12,18 +12,38 @@ export default class loginService extends Service {
 	}
 
 	async handle() {
+		try {
+			let _User = (new User).getInstance();
+			_User.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ] }, (err, user) => {
+				if (err) {
+					return this.end(err)
+				} else {
+					return this.toJson({
+						user
+					})
+				}
+			})
 
-		this.Users.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ] }, function (err, user) {
-			if (err) {
-				res.send(err)
-			} else {
-				res.status(200)
-				res.json(user)
-			}
-		})
-
-		return this.toJson({
-			name: this.constructor.name
-		})
+			return 
+		} catch (e) {
+			console.log('data base error.')
+			return this.end()
+		}
 	}
+
+	// async handle() {
+
+	// 	this.Users.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ] }, function (err, user) {
+	// 		if (err) {
+	// 			res.send(err)
+	// 		} else {
+	// 			res.status(200)
+	// 			res.json(user)
+	// 		}
+	// 	})
+
+	// 	return this.toJson({
+	// 		name: this.constructor.name
+	// 	})
+	// }
 }

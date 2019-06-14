@@ -1,5 +1,5 @@
 import Service from '../Service';
-let mongoose = require('mongoose')
+import User from '~/app/models/User';
 
 // let axios = require('axios')
 
@@ -10,20 +10,23 @@ export default class loginService extends Service {
 	}
 	
 	async handle() {
-		// instruction
-		let Users = mongoose.model('Users')
-		
-		let newUser = new Users(req.body)
-			newUser.save(function (err, user) {
-				if (err) {
-					res.send(err)
-				} else {
-					res.json(user)
-				}
-			})
-
-		return this.toJson({
-			name: this.constructor.name
+	//	instruction
+	try {
+		let _User = (new User).getInstance();
+		(new _User(this.req.body)).save((err, user) => {
+			console.log({err, user})
+			if (err) {
+				return this.end(err)
+			} else {
+				return this.toJson({
+					newUser	: {}
+				})
+			}
 		})
+	} catch (e) {
+		console.log('data base error.')
+		return this.end()
+	}
+		//name: this.constructor.name
 	}
 }

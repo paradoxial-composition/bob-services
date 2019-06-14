@@ -1,46 +1,86 @@
 import React from 'react';
 import './Dashboard.scss';
-import {Card} from 'antd';
+import { Card, Row, Col, Divider} from 'antd';
 
 let Dashboard = ({componentItems, services}) => {
 
 	let askDisplay= [];
 	let jobDisplay= [];
-
+	let colGris = {
+		xxl: 6,
+		xl: 6,
+		lg: 8,
+		md: 8,
+		ms: 12
+	}
 	services.map((item,index) => {
 		if (item.type === 'ask') {
 			askDisplay.push(
-				<Card key={index} style={{ with: 200}}>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.activity} <spacer/> {item.activity}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.creationDate} <spacer/> {item.creationDate}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.user} <spacer/> {item.userId}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.description} <spacer/> {item.description}</label></div>
-				</Card>
+				<Col {...colGris}>
+					<Card className="CardItem" key={index}>
+						<p>{componentItems.cardItems.activity} 
+							<spacer/> <b>{item.activity}</b>
+						</p>
+						<p>{componentItems.cardItems.creationDate} 
+							<spacer/> <b>{item.creationDate}</b>
+						</p>
+						<p>{componentItems.cardItems.user} 
+							<spacer/> <b>{item.userId}</b>
+						</p>
+						<p>{componentItems.cardItems.description} 
+							<spacer/> <b>{item.description}</b>
+						</p>
+					</Card>
+				</Col>
 			)
 		}
 		if (item.type === 'job') {
 			jobDisplay.push(
-				<Card key={index} style={{ with: 200}}>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.activity} <spacer/> {item.activity}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.creationDate} <spacer/> {item.creationDate}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.user} <spacer/> {item.userId}</label></div>
-					<div style={{display: 'flex'}}><label>{componentItems.cardItems.description} <spacer/> {item.description}</label></div>
-				</Card>
+				<Col {...colGris}>
+					<Card className="CardItem" key={index}>
+						<p>{componentItems.cardItems.activity} 
+							<spacer/> <b>{item.activity}</b>
+						</p>
+						<p>{componentItems.cardItems.creationDate} 
+							<spacer/> <b>{item.creationDate}</b>
+						</p>
+						<p>{componentItems.cardItems.user} 
+							<spacer/> <b>{item.userId}</b>
+						</p>
+						<p>{componentItems.cardItems.description} 
+							<spacer/> <b>{item.description}</b>
+						</p>
+					</Card>
+				</Col>
 			)
 		}
 	})
 
 	return (
-			<div>
-				<h3>{componentItems.jobTitle}</h3>
-				<div style={{ display: 'flex' }}>
+			<div className="Dashboard">
+				<h2>{componentItems.jobTitle}</h2>
+				<Row>
+					<Col offset={10} span={4}>
+						<Divider />
+					</Col>
+				</Row>
+				<Row gutter={24} type="flex" justify="start">
 					{jobDisplay}
-				</div>
-
-				<h3>{componentItems.askTitle}</h3>
-				<div style={{ display: 'flex' }}>
+				</Row>
+				<Row>
+					<Col offset={6} span={12}>
+						<Divider />
+					</Col>
+				</Row>
+				<h2>{componentItems.askTitle}</h2>
+				<Row>
+					<Col offset={10} span={4}>
+						<Divider />
+					</Col>
+				</Row>
+				<Row gutter={24} type="flex" justify="start">
 					{askDisplay}
-				</div>
+				</Row>
 			</div>
 		);
 }

@@ -7,17 +7,17 @@ let SideBarContainer = (props) => {
 			dashboard: {
 				path: '/',
 				label: 'Acceuil',
-				icon: 'user'
+				icon: 'home'
 			},
 			myAsks: {
 				path: 'asks',
 				label: 'Mes Demmandes',
-				icon: 'user'
+				icon: 'snippets'
 			},
 			myJobs: {
 				path: 'jobs',
 				label: 'Mes Reponses',
-				icon: 'user'
+				icon: 'hdd'
 			},
 			profil: {
 				label: 'Mon profile',

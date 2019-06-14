@@ -53,3 +53,13 @@
 .ant-avatar.ant-avatar-icon {
   margin-left: 10px;
 }
+
+.trigger {
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 42%;
+    left: 10%;
+  }
+}

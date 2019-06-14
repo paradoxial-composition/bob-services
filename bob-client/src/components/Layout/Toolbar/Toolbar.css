@@ -1,0 +1,55 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  height: 56px;
+  z-index: 3;
+}
+
+.toolbar_search-bar {
+  color: white;
+  text-decoration: none;
+  padding: 0 3rem;
+}
+
+.toolbar_login-info {
+  color: #001B2D;
+  text-decoration: none;
+}
+
+.toolbar__navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: 100%;
+}
+
+.toolbar__logo {
+  color: #001B2D;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.toolbar__navigation-items ul {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.toolbar__navigation-items li  {
+  padding : 0 2rem;
+}
+
+.toolbar__navigation-items {
+  color: white;
+  text-decoration: none;
+
+}
+
+.ant-avatar.ant-avatar-icon {
+  margin-left: 10px;
+}

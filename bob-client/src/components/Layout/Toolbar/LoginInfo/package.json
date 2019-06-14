@@ -1,0 +1,5 @@
+{
+	"name": "LoginInfo-container",
+	"version": "0.0.1",
+	"main": "./LoginInfoContainer.js"
+}

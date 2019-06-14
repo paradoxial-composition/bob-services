@@ -1,5 +1,5 @@
-import welcomeService from './welcomeService';
+import loginService from './loginService';
 
 export {
-	welcomeService
+	loginService
 };

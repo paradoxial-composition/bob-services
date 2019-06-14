@@ -7,7 +7,7 @@ let optional = (arg, _def) => {
 
 export default {
 	KEY: optional(process.env.KEY, null),
-	PORT: optional(process.env.PORT, 3000),
+	PORT: optional(process.env.PORT, 7000),
 	DB_PORT: optional(process.env.DB_PORT, 27017),
 	DB_USERNAME: optional(process.env.DB_USERNAME, 'root'),
 	DB_PASSWORD: optional(process.env.DB_PASSWORD, 'root'),

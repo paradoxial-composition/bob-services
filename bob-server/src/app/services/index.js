@@ -1,11 +1,11 @@
 import loginService from './loginService';
 import registerService from './registerService';
 import serviceUnitsService from './serviceUnitsService';
-import addServiceService from './addServiceService';
+import addServiceUnitsService from './addServiceUnitsService';
 
 export {
 	loginService,
 	registerService,
 	serviceUnitsService,
-	addServiceService
+	addServiceUnitsService
 };

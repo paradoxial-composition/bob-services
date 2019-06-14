@@ -1,6 +1,5 @@
 import Service from '../Service';
 let mongoose = require('mongoose')
-let Users = mongoose.model('Users')
 
 // let axios = require('axios')
 
@@ -8,11 +7,13 @@ export default class loginService extends Service {
 
 	constructor({req, res}) {
 		super({req, res});
+
+		this.Users = mongoose.model('Users')
 	}
 
 	async handle() {
 
-		Users.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ] }, function (err, user) {
+		this.Users.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ] }, function (err, user) {
 			if (err) {
 				res.send(err)
 			} else {

@@ -1,6 +1,5 @@
 import Service from '../Service';
-let mongoose = require('mongoose')
-let ServiceUnits = mongoose.model('ServiceUnits')
+import mongoose from 'mongoose';
 
 // let axios = require('axios')
 
@@ -12,6 +11,7 @@ export default class serviceUnitsService extends Service {
 
 	async handle() {
 
+		let ServiceUnits = mongoose.model('ServiceUnits')
 		ServiceUnits.find({}, function (err, usnitServices) {
 			if (err) {
 				res.send(err)

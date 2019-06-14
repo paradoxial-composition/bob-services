@@ -38,4 +38,4 @@ class DB {
     }
 }
 
-export default DB;
+export default new DB;

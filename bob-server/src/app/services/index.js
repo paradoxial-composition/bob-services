@@ -9,6 +9,7 @@ import addServiceUnitsService from './serviceUnits/addServiceUnitsService';
 import readServiceUnitService from './serviceUnits/readServiceUnitService';
 import updateServiceUnitService from './serviceUnits/updateServiceUnitService';
 import deleteServiceUnitService from './serviceUnits/deleteServiceUnitService';
+import localServiceUnitsService from './serviceUnits/localServiceUnitsService';
 
 export {
 	loginService,
@@ -21,5 +22,6 @@ export {
 	serviceUnitsService,
 	readServiceUnitService,
 	updateServiceUnitService,
-	deleteServiceUnitService
+	deleteServiceUnitService,
+	localServiceUnitsService
 };

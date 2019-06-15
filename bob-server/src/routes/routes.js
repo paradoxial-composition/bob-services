@@ -13,6 +13,7 @@ import {
 	updateServiceUnitService,
 	deleteServiceUnitService
 	} from '~/app/services';
+import { localServiceUnitsService } from '../app/services';
 	
 export default Router([
 	{
@@ -65,5 +66,10 @@ export default Router([
 		path: 'serviceUnits/:id',
 		service: deleteServiceUnitService,
 		method: "DELETE",
+	},
+	{
+		path: 'serviceUnits/local/:radius',
+		service: localServiceUnitsService,
+		method: "GET"
 	}
 ])

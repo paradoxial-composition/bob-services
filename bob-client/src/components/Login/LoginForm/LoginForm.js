@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Col } from 'antd';
 
 
 import axios from 'axios';
-import Loader from '../Loader';
+import Loader from '../../Loader';
 
 const BASE_URL = 'http://localhost:7000';
 const usersURL = '/users';
@@ -16,7 +16,7 @@ let LoginForm = ({form}) => {
 
 	let  handleSubmit = async (e) => {
     e.preventDefault();
-    form.validateFields((err, values) => {
+   await form.validateFields( async (err, values) => {
       if (!err) {
         await axios.post(`${BASE_URL}${usersURL}/login`, { email: values.email, password: values.password} ) // req.params.id
           .then((response) => {
@@ -64,10 +64,17 @@ let LoginForm = ({form}) => {
           <a className="login-form-forgot" href="">
             Forgot password
           </a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-          Or <a href=""><Link to={'/register'} />register now!</a>
+          <Col style={{ textAlign: 'center'}}>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Log in
+            </Button>
+          </Col>
+        </Form.Item>
+        <Form.Item>
+          <Col style={{ textAlign: 'center'}}>
+            <Link to={'/register'} />
+            <a >register now!</a>
+          </Col>
         </Form.Item>
       </Form>
 		);

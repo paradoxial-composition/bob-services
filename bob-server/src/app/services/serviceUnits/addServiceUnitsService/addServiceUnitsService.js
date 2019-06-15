@@ -19,7 +19,7 @@ export default class addServiceUnitsService extends Service {
 					return this.end(err)
 				} else {
 					return this.toJson({
-						newServiceUnit	: {}
+						serviceUnit
 					})
 				}
 			})

@@ -6,6 +6,9 @@ import updateUserService from './Users/updateUserService';
 
 import serviceUnitsService from './serviceUnits/serviceUnitsService';
 import addServiceUnitsService from './serviceUnits/addServiceUnitsService';
+import readServiceUnitService from './serviceUnits/readServiceUnitService';
+import updateServiceUnitService from './serviceUnits/updateServiceUnitService';
+import deleteServiceUnitService from './serviceUnits/deleteServiceUnitService';
 
 export {
 	loginService,
@@ -16,4 +19,7 @@ export {
 	
 	addServiceUnitsService,
 	serviceUnitsService,
+	readServiceUnitService,
+	updateServiceUnitService,
+	deleteServiceUnitService
 };

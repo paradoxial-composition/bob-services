@@ -9,6 +9,9 @@ import {
 
 	serviceUnitsService,
 	addServiceUnitsService,
+	readServiceUnitService,
+	updateServiceUnitService,
+	deleteServiceUnitService
 	} from '~/app/services';
 	
 export default Router([
@@ -47,5 +50,20 @@ export default Router([
 		path: 'serviceUnits',
 		service: addServiceUnitsService,
 		method: "POST",
+	},
+	{
+		path: 'serviceUnits/:id',
+		service: readServiceUnitService,
+		method: "GET",
+	},
+	{
+		path: 'serviceUnits/:id',
+		service: updateServiceUnitService,
+		method: "POST",
+	},
+	{
+		path: 'serviceUnits/:id',
+		service: deleteServiceUnitService,
+		method: "DELETE",
 	}
 ])

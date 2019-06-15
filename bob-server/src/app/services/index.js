@@ -1,13 +1,19 @@
-import loginService from './loginService';
-import registerService from './registerService';
-import serviceUnitsService from './serviceUnitsService';
-import addServiceUnitsService from './addServiceUnitsService';
-import allUsersService from './allUsersService';
+import loginService from './Users/loginService';
+import registerService from './Users/registerService';
+import allUsersService from './Users/allUsersService';
+import deleteUserService from './Users/deleteUserService';
+import updateUserService from './Users/updateUserService';
+
+import serviceUnitsService from './serviceUnits/serviceUnitsService';
+import addServiceUnitsService from './serviceUnits/addServiceUnitsService';
 
 export {
 	loginService,
 	registerService,
-	serviceUnitsService,
+	allUsersService,
+	deleteUserService,
+	updateUserService,
+	
 	addServiceUnitsService,
-	allUsersService
+	serviceUnitsService,
 };

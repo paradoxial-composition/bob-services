@@ -1,5 +1,5 @@
-import Service from '../Service';
-let mongoose = require('mongoose')
+import Service from '../../Service';
+import User from '~/app/models/User';
 
 // let axios = require('axios')
 
@@ -7,14 +7,12 @@ export default class loginService extends Service {
 
 	constructor({req, res}) {
 		super({req, res});
-
-		this.Users = mongoose.model('Users')
 	}
 
 	async handle() {
 		try {
 			let _User = (new User).getInstance();
-			_User.findOne({ $and: [ {email: req.body.email}, {password: req.body.password} ] }, (err, user) => {
+			_User.findOne({ $and: [ {email: this.req.body.email}, {password: this.req.body.password} ] }, (err, user) => {
 				if (err) {
 					return this.end(err)
 				} else {
@@ -23,8 +21,6 @@ export default class loginService extends Service {
 					})
 				}
 			})
-
-			return 
 		} catch (e) {
 			console.log('data base error.')
 			return this.end()

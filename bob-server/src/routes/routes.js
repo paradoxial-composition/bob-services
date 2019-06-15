@@ -1,11 +1,16 @@
 import Router from './lib/Router';
 import { authMiddleware } from '~/app/middlewares';
-import { loginService, 
+import { 
+	loginService, 
 	registerService,
+	allUsersService,
+	deleteUserService,
+	updateUserService,
+
 	serviceUnitsService,
 	addServiceUnitsService,
-	allUsersService } from '~/app/services';
-
+	} from '~/app/services';
+	
 export default Router([
 	{
 		path: 'users/login',
@@ -22,6 +27,16 @@ export default Router([
 		path: 'users',
 		service: allUsersService,
 		method: "GET",
+	},
+	{
+		path: 'users/:id',
+		service: deleteUserService,
+		method: "DELETE",
+	},
+	{
+		path: 'users/:id',
+		service: updateUserService,
+		method: "POST",
 	},
 	{
 		path: 'serviceUnits',

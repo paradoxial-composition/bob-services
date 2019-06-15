@@ -1,4 +1,4 @@
-import Service from '../Service';
+import Service from '../../Service';
 import User from '~/app/models/User';
 
 // let axios = require('axios')

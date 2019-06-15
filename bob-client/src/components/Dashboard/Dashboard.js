@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.scss';
-import { Card, Row, Col, Divider} from 'antd';
+import { Card, Row, Col, Divider, Empty} from 'antd';
 
 let Dashboard = ({componentItems, services}) => {
 
@@ -55,6 +55,22 @@ let Dashboard = ({componentItems, services}) => {
 			)
 		}
 	})
+
+	if (jobDisplay.length === 0)  {
+		jobDisplay.push(
+			<Col span={24}>
+					<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+			</Col>
+		)
+	}
+
+	if (askDisplay.length === 0)  {
+		askDisplay.push(
+			<Col span={24}>
+					<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+			</Col>
+		)
+	}
 
 	return (
 			<div className="Dashboard">

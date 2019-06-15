@@ -1,14 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
+
+import axios from 'axios';
+import Loader from '../Loader';
+
+const BASE_URL = 'http://localhost:7000';
+const usersURL = '/users';
+
+
 let LoginForm = ({form}) => {
-	let  handleSubmit = e => {
+  let [user, setUser] = useState();
+
+	let  handleSubmit = async (e) => {
     e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        await axios.post(`${BASE_URL}${usersURL}/login`, { email: values.email, password: values.password} ) // req.params.id
+          .then((response) => {
+            console.log(response.data);
+            setUser(response.data);
+            console.log(user);
+            // TODO: Redux Store here
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     });
   };
@@ -17,12 +36,12 @@ let LoginForm = ({form}) => {
 	return (
 		<Form onSubmit={handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please input your email!' }],
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
+              placeholder="Email"
             />,
           )}
         </Form.Item>

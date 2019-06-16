@@ -24,7 +24,7 @@ export default class loginService extends Service {
 				}
 			})
 		} catch (e) {
-			console.log('data base error.')
+			console.log('data base error.', e.message)
 			return this.end()
 		}
 	}

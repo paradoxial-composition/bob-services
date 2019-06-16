@@ -8,7 +8,6 @@ import DB from './orm/db';
 export default class Container {
 
 	constructor(App, httpServer) {
-		DB.connect();
 		console.log("DB");
 		this.App = App;
 		this.httpServer = httpServer;

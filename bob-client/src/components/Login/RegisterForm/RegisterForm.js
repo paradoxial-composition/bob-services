@@ -2,8 +2,12 @@ import React from 'react';
 import './RegisterForm.scss';
 import { Form, Icon, Input, Button, Divider, DatePicker, Col} from 'antd';
 
+
 import axios from 'axios';
 import Loader from '../../Loader';
+
+const BASE_URL = 'http://localhost:7000';
+const usersURL = '/users';
 
 let RegisterForm = ({form}) => {
 	let  handleSubmit = async (e) => {
@@ -21,9 +25,7 @@ let RegisterForm = ({form}) => {
         }
         await axios.post(`${BASE_URL}${usersURL}/register`, user ) // req.params.id
           .then((response) => {
-            console.log(response.data);
-            setUser(response.data);
-            console.log(user);
+            console.log(response);
           })
           .catch(err => {
             console.log(err)

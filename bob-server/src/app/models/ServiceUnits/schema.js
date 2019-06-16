@@ -24,5 +24,6 @@ export default {
     location: {
         type: { type: String },
         coordinates: []
-    }
+    },
+    solved: Boolean
 }

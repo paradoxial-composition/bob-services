@@ -4,18 +4,12 @@ import { withRouter } from 'react-router-dom'
 
 let ToolbarContainer = ({match, location, ...props}) => {
 
-	let Title = 'Dashboard';
+	let Title = 'Acceuil';
 	
-	if(location.pathname.indexOf("regions") === 1) {
-		Title = 'Régions';
-	} else if (location.pathname.indexOf("audits") === 1) {
-		Title = 'Audits';
-	} else if (location.pathname.indexOf("establishments") === 1) {
-		Title = 'Etablissements';
-	} else if (location.pathname.indexOf("users") === 1) {
-		Title = 'Utilisateurs';
-	} else if (location.pathname.indexOf("reports") === 1) {
-		Title = 'Raports';
+	if(location.pathname.indexOf("jobs") === 1) {
+		Title = 'Mes reponses';
+	} else if (location.pathname.indexOf("asks") === 1) {
+		Title = 'Mes demandes';
 	}
 
 	let methods = {

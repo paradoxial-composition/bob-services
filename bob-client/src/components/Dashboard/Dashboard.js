@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.scss';
-import { Card, Row, Col, Divider, Empty} from 'antd';
+import { Button, notification, Card, Row, Col, Divider, Empty} from 'antd';
 
 let Dashboard = ({componentItems, services}) => {
 
@@ -13,6 +13,20 @@ let Dashboard = ({componentItems, services}) => {
 		md: 8,
 		ms: 12
 	}
+
+	const suggestHelp = () => {
+
+		//TODO: insert Job add by this user call here
+
+		const args = {
+			message: 'Propsition d\'aide envoyé.',
+			description:
+				'Merci pour votre intérêt.',
+			duration: 1.5,
+		};
+		notification.open(args);
+	};
+
 	services.map((item,index) => {
 		if (item.type === 'ask') {
 			askDisplay.push(
@@ -30,6 +44,11 @@ let Dashboard = ({componentItems, services}) => {
 						<p>{componentItems.cardItems.description} 
 							<spacer/> <b>{item.description}</b>
 						</p>
+						<Row style={{ textAlign: 'center'}}>
+							<Button type="primary" shape="round" icon="plus" onClick={suggestHelp}>
+								Aider
+							</Button>
+						</Row>
 					</Card>
 				</Col>
 			)
@@ -50,6 +69,11 @@ let Dashboard = ({componentItems, services}) => {
 						<p>{componentItems.cardItems.description} 
 							<spacer/> <b>{item.description}</b>
 						</p>
+						<Row style={{ textAlign: 'center'}}>
+							<Button type="primary" shape="round" icon="mail" >
+								Contacter
+							</Button>
+						</Row>
 					</Card>
 				</Col>
 			)

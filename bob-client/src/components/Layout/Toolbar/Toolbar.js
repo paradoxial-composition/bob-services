@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Toolbar.scss';
 import LoginInfo from './LoginInfo';
-import {Icon} from 'antd';
+import AddAsk from '../../AddAsk';
+import {Icon, Col, Button, Modal} from 'antd';
 
 let Toolbar = ({Title, collapsed, toggle}) => {
+	let [visible, setVisible] = useState(false);
+	
 	return (
 		<nav className="toolbar__navigation">
 			<Icon
@@ -12,8 +15,21 @@ let Toolbar = ({Title, collapsed, toggle}) => {
 				onClick={toggle}
 			/>
 			<div className="toolbar__logo">{Title}</div>
+			<Col span={12} style={{ textAlign: 'right'}}>
+				<Button type="primary" shape="round" icon="plus" onClick={() => {setVisible(true)}} >
+					J'ai besoin d'aide
+				</Button>
+				<Modal
+          title="Postuler une demande."
+					visible={visible}
+					onCancel={() => {setVisible(false)}}
+          footer = {null}
+        >
+          <AddAsk setVisible={setVisible}/>
+        </Modal>
+			</Col>
 			<div className="toolbar_login-info">
-				<LoginInfo />
+					<LoginInfo />
 			</div>
 		</nav>
 	);

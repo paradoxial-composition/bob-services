@@ -7,7 +7,7 @@ class Model {
 
     async init(modelSchema) {
         this.name = this.constructor.name;
-        this._instance = model(this.name, new Schema(modelSchema));
+        // this._instance = model(this.name, new Schema(modelSchema));
     }
 
     getName() {
@@ -15,7 +15,7 @@ class Model {
     }
     
     getInstance() {
-        return this._instance;
+        return model(this.name, new Schema(modelSchema));
     }
 }
 

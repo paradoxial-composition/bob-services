@@ -1,7 +1,36 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Jobs from './Jobs';
 
+
+import axios from 'axios';
+import Loader from '../Loader';
+
+const BASE_URL = 'http://localhost:7000';
+const serviceUnitsURL = '/serviceUnits';
+
 let JobsContainer = (props) => {
+	useEffect(() => {
+		getMyJobs();
+	}, []);
+
+	let [radius, SetRadius] = useState(200000000);
+	let [loading, setLoading] = useState(false);
+	let [jobs, setJobs] = useState([]);
+
+	async function getMyJobs () {
+		// setLoading(true);
+		await axios.get(`${BASE_URL}${serviceUnitsURL}/jobs/`) // req.params.id
+		.then((response) => {
+			console.log(response.data);
+			setJobs(response.data);
+			console.log(jobs);
+		})
+		.catch(err => {
+			console.log(err)
+		})
+		// .finally(() => setLoading(false))
+	}
+
 	let methods = {
 
 		componentItems: {

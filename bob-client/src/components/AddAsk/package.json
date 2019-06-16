@@ -1,0 +1,5 @@
+{
+	"name": "AddAsk-container",
+	"version": "0.0.1",
+	"main": "./AddAskContainer.js"
+}

@@ -20,5 +20,10 @@ export default {
     achieved: {
         type: Boolean,
         default: false
-    }
+    },
+    location: {
+        type: { type: String },
+        coordinates: []
+    },
+    solved: Boolean
 }

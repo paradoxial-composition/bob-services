@@ -2,6 +2,7 @@ import React from 'react';
 import Profil from './Profil';
 
 let ProfilContainer = (props) => {
+
 	let methods = {
 		componentItems: {
 			personal: {

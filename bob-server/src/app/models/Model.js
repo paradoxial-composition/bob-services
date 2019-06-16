@@ -2,7 +2,6 @@ import DB from '~/vendor/orm/db';
 import { Schema, model } from 'mongoose';
 class Model {
     constructor(modelSchema) {
-        new DB();
         this.init(modelSchema);
     }
 

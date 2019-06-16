@@ -1,4 +1,4 @@
-import Service from '../Service';
+import Service from '../../Service';
 let mongoose = require('mongoose')
 let Users = mongoose.model('Users')
 

@@ -1,14 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Col } from 'antd';
+// import history from '../../../history';
 
-let LoginForm = ({form}) => {
-	let  handleSubmit = e => {
+import axios from 'axios';
+import Loader from '../../Loader';
+
+const BASE_URL = 'http://localhost:7000';
+const usersURL = '/users';
+
+
+let LoginForm = ({form, history}) => {
+  let [user, setUser] = useState();
+
+	let  handleSubmit = async (e) => {
     e.preventDefault();
-    form.validateFields((err, values) => {
+   await form.validateFields( async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        await axios.post(`${BASE_URL}${usersURL}/login`, { email: values.email, password: values.password} ) // req.params.id
+          .then((response) => {
+            console.log(response.data);
+            localStorage.setItem('user', JSON.stringify(response.data));
+            history.push('/');
+            // TODO: Redux Store here
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     });
   };
@@ -17,12 +36,12 @@ let LoginForm = ({form}) => {
 	return (
 		<Form onSubmit={handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please input your email!' }],
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
+              placeholder="Email"
             />,
           )}
         </Form.Item>
@@ -43,12 +62,18 @@ let LoginForm = ({form}) => {
             initialValue: true,
           })(<Checkbox>Remember me</Checkbox>)}
           <a className="login-form-forgot" href="">
-            Forgot password
+            Mot de passe oublié
           </a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-          Or <a href=""><Link to={'/register'} />register now!</a>
+          <Col style={{ textAlign: 'center'}}>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              S'Authentifier
+            </Button>
+          </Col>
+        </Form.Item>
+        <Form.Item >
+          <Col style={{ textAlign: 'center'}}>
+            <Button type="link" onClick={() => {history.push('/auth/register');}}> Créer un compte</Button>
+          </Col>
         </Form.Item>
       </Form>
 		);

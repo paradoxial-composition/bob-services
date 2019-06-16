@@ -22,9 +22,12 @@ export default {
         required: true,
         unique: true,
     },
+    password: {
+        type: String,
+        required: true,
+    },
     enabled: {
         type: Boolean,
-        default: false
-    },
-    password: String
+        default: true
+    }
 }

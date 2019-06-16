@@ -1,8 +1,13 @@
 import React from 'react';
 import './Dashboard.scss';
-import { Card, Row, Col, Divider} from 'antd';
+import { Button, notification, Card, Row, Col, Divider, Empty} from 'antd';
 
-let Dashboard = ({componentItems, services}) => {
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:7000';
+const serviceUnitsURL = '/serviceUnits';
+
+let Dashboard = ({componentItems, services, currentUser}) => {
 
 	let askDisplay= [];
 	let jobDisplay= [];
@@ -13,6 +18,31 @@ let Dashboard = ({componentItems, services}) => {
 		md: 8,
 		ms: 12
 	}
+
+	const suggestHelp = (task) => {
+		
+		console.log('TASK :', task, ' USER ', currentUser._id);
+
+		// task.intrestedUsers.push(currentUser._id);
+
+		// axios.post(`${BASE_URL}${serviceUnitsURL}/${task._id}`, task)
+		// .then((response) => {
+		// 	console.log(response);
+		// })
+		// .catch(err => {
+		// 	console.log(err)
+		// })
+//		.finally(() => setLoading(false))
+
+		const args = {
+			message: 'Propsition d\'aide envoyé.',
+			description:
+				'Merci pour votre intérêt.',
+			duration: 1.5,
+		};
+		notification.open(args);
+	};
+
 	services.map((item,index) => {
 		if (item.type === 'ask') {
 			askDisplay.push(
@@ -30,6 +60,11 @@ let Dashboard = ({componentItems, services}) => {
 						<p>{componentItems.cardItems.description} 
 							<spacer/> <b>{item.description}</b>
 						</p>
+						<Row style={{ textAlign: 'center'}}>
+							<Button type="primary" shape="round" icon="plus" onClick={() => {suggestHelp(item)}}>
+								Aider
+							</Button>
+						</Row>
 					</Card>
 				</Col>
 			)
@@ -50,11 +85,32 @@ let Dashboard = ({componentItems, services}) => {
 						<p>{componentItems.cardItems.description} 
 							<spacer/> <b>{item.description}</b>
 						</p>
+						<Row style={{ textAlign: 'center'}}>
+							<Button type="primary" shape="round" icon="mail" >
+								Contacter
+							</Button>
+						</Row>
 					</Card>
 				</Col>
 			)
 		}
 	})
+
+	if (jobDisplay.length === 0)  {
+		jobDisplay.push(
+			<Col span={24}>
+					<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+			</Col>
+		)
+	}
+
+	if (askDisplay.length === 0)  {
+		askDisplay.push(
+			<Col span={24}>
+					<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+			</Col>
+		)
+	}
 
 	return (
 			<div className="Dashboard">

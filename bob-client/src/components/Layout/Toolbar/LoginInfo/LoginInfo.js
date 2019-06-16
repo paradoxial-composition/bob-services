@@ -8,7 +8,13 @@ import { Menu, Dropdown, Icon } from 'antd';
 // import { connect } from 'react-redux';
 
 
-let LoginInfo = ({user, logout, componentItems}) => {
+let LoginInfo = ({user, componentItems, history}) => {
+
+	let logout = () => {
+		localStorage.removeItem('user');
+		history.push('/auth');
+	}
+
 	return (
 		<div style={{ dislay: 'flex'}}>
 				<label>{user.lastName + ' '}</label>

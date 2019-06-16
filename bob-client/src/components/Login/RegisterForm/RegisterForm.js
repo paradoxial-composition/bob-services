@@ -1,6 +1,6 @@
 import React from 'react';
 import './RegisterForm.scss';
-import { Form, Icon, Input, Button, Divider, DatePicker, Col} from 'antd';
+import { Form, Icon, Input, Button, Divider, DatePicker, Col, Row} from 'antd';
 
 
 import axios from 'axios';
@@ -9,7 +9,7 @@ import Loader from '../../Loader';
 const BASE_URL = 'http://localhost:7000';
 const usersURL = '/users';
 
-let RegisterForm = ({form}) => {
+let RegisterForm = ({form, history}) => {
 	let  handleSubmit = async (e) => {
     e.preventDefault();
     form.validateFields( async (err, values) => {
@@ -26,6 +26,7 @@ let RegisterForm = ({form}) => {
         await axios.post(`${BASE_URL}${usersURL}/register`, user ) // req.params.id
           .then((response) => {
             console.log(response);
+            history.push('/auth')
           })
           .catch(err => {
             console.log(err)
@@ -89,14 +90,20 @@ let RegisterForm = ({form}) => {
         </Form.Item>
 
         <Divider />
-        
-        <Col style={{ textAlign: 'center'}}>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" className="register-form-button">
-              Sign in
-            </Button>
-          </Form.Item>
-        </Col>
+        <Row style={{ textAlign: 'center'}}>
+          <Col >
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="register-form-button">
+                Enregistrer
+              </Button>
+            </Form.Item>
+          </Col>
+          <Col style={{ textAlign: 'center'}}>
+            <Form.Item>
+            <Button type="link" onClick={() => {history.push('/auth');}}>Annuler</Button>
+            </Form.Item>
+          </Col>
+        </Row>
       </Form>
 		);
 }

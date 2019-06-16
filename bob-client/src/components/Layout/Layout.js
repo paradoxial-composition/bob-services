@@ -6,7 +6,7 @@ import Toolbar from './Toolbar';
 import Profil from '../Profil';
 const { Header, Sider, Content } = Layout;
 
-let _Layout = ({children}) => {
+let _Layout = ({children, history}) => {
 	let [collapsed, setCollapsed] = useState(false);
 	let [visible, setVisible] = useState(false);
 
@@ -22,7 +22,7 @@ let _Layout = ({children}) => {
 
 			<Layout>
 				<Header style={{ background: '#fff', padding: 0 }}>
-					<Toolbar toggle={toggle} collapsed={collapsed}/>
+					<Toolbar toggle={toggle} collapsed={collapsed} history={history}/>
 				</Header>
 				
 				<Drawer

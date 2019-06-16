@@ -3,20 +3,18 @@ import LoginInfo from './LoginInfo';
 
 let LoginInfoContainer = (props) => {
 
-	let logout = () => {
-		
-	}
+
+	let currentUser= JSON.parse(localStorage.getItem('user')).user;
 
 	let methods = {
+
 		user: {
-			firstName: 'Othman',
-			lastName: 'EL BANI'
+			firstName: currentUser.firstName,
+			lastName: currentUser.lastName
 		},
 		componentItems: {
 			logout: 'Déconnexion'
 		},
-
-		logout,
 		
 		...props
 	}

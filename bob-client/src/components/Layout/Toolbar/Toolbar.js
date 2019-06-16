@@ -4,7 +4,7 @@ import LoginInfo from './LoginInfo';
 import AddAsk from '../../AddAsk';
 import {Icon, Col, Button, Modal} from 'antd';
 
-let Toolbar = ({Title, collapsed, toggle}) => {
+let Toolbar = ({Title, collapsed, toggle, history}) => {
 	let [visible, setVisible] = useState(false);
 	
 	return (
@@ -29,7 +29,7 @@ let Toolbar = ({Title, collapsed, toggle}) => {
         </Modal>
 			</Col>
 			<div className="toolbar_login-info">
-					<LoginInfo />
+					<LoginInfo history={history}/>
 			</div>
 		</nav>
 	);

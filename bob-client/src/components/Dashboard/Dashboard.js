@@ -23,16 +23,15 @@ let Dashboard = ({componentItems, services, currentUser}) => {
 		
 		console.log('TASK :', task, ' USER ', currentUser._id);
 
-		// task.intrestedUsers.push(currentUser._id);
+		task.intrestedUsers.push(currentUser._id);
 
-		// axios.post(`${BASE_URL}${serviceUnitsURL}/${task._id}`, task)
-		// .then((response) => {
-		// 	console.log(response);
-		// })
-		// .catch(err => {
-		// 	console.log(err)
-		// })
-//		.finally(() => setLoading(false))
+		axios.post(`${BASE_URL}${serviceUnitsURL}/${task._id}`, task)
+		.then((response) => {
+			console.log(response);
+		})
+		.catch(err => {
+			console.log(err)
+		})
 
 		const args = {
 			message: 'Propsition d\'aide envoyé.',

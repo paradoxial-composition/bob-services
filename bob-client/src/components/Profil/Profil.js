@@ -3,6 +3,7 @@ import './Profil.scss';
 import {Divider, Card, Row, Col, Descriptions} from 'antd';
 
 let Profil = ({componentItems, currentUser, DescriptionItem}) => {
+	console.log(currentUser);
 	return (
 			<div>
 				<Card bordered={false}>
@@ -13,7 +14,7 @@ let Profil = ({componentItems, currentUser, DescriptionItem}) => {
 					</Row>
 					<Row>
 						<Col span={12}>
-							<DescriptionItem title={componentItems.personal.fullName} content={currentUser.fullName} />
+							<DescriptionItem title={componentItems.personal.fullName} content={currentUser.lastName + ' ' + currentUser.firstName} />
 						</Col>
 					</Row>
 					<Row>
@@ -23,7 +24,7 @@ let Profil = ({componentItems, currentUser, DescriptionItem}) => {
 					</Row>
 					<Row>
 						<Col span={12}>
-							<DescriptionItem title={componentItems.personal.birthDate} content={currentUser.birthDate} />
+							<DescriptionItem title={componentItems.personal.birthDate} content={ String(currentUser.birthDate).split('T')[0]} />
 						</Col>
 					</Row>	
 				</Card>

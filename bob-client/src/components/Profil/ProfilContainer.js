@@ -4,6 +4,8 @@ import Profil from './Profil';
 let ProfilContainer = (props) => {
 
 	let methods = {
+		currentUser: JSON.parse(localStorage.getItem('user')).user,
+		
 		componentItems: {
 			personal: {
 				title: 'Informations personelle',
@@ -16,14 +18,6 @@ let ProfilContainer = (props) => {
 				email: 'Email',
 				phone: 'Tél'
 			}
-		},
-
-		currentUser: {
-			fullName: 'EL BANI Othman',
-			adress: 'Somewhere between what is real and what is unreal, right after the corner of existential nothingness.',
-			birthDate: '30-07-1992',
-			email: 'elbani.othman@gmail.com',
-			phone: '+212 6 XX XX XX XX'
 		},
 
 		DescriptionItem: ({ title, content }) => (

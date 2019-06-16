@@ -30,7 +30,6 @@ let AddAsk = ({setVisible, form}) => {
         }
         
         setCoord( location );
-        console.log('NAAV, ', location);
         return location;
       });
       
@@ -60,14 +59,13 @@ let AddAsk = ({setVisible, form}) => {
           },
           solved: false
         }
-        console.log('Nav ', coord, 'ASK ', ask)
-        // await axios.post(`${BASE_URL}${usersURL}/ask`, ask ) // req.params.id
-        //   .then((response) => {
-        //     console.log(response);
-        //   })
-        //   .catch(err => {
-        //     console.log(err)
-        //   })
+        await axios.post(`${BASE_URL}${usersURL}/ask`, ask )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     });
 	};

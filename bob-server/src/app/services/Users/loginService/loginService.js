@@ -11,7 +11,9 @@ export default class loginService extends Service {
 
 	async handle() {
 		try {
+			console.log('Login HEY1')
 			let _User = (new User).getInstance();
+			console.log('Login HEY2')
 			_User.findOne({ $and: [ {email: this.req.body.email}, {password: this.req.body.password} ] }, (err, user) => {
 				if (err) {
 					return this.end(err)

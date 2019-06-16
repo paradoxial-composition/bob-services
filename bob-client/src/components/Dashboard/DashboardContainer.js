@@ -33,6 +33,7 @@ let DashboardContainer = (props) => {
 	
 	let methods = {
 		// services,
+		currentUser: JSON.parse(localStorage.getItem('user')).user,
 
 		componentItems: {
 			jobTitle: 'Vos voisins ont besoin de vous.',

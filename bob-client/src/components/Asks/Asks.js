@@ -43,10 +43,10 @@ let Asks = ({componentItems, services}) => {
 							<Button type="danger" ghost shape="round" icon="minus">
 								Retirer
 							</Button>
-							<Button type="primary"  shape="round" style={{ marginLeft: 10}}>
+						</Popconfirm>
+						<Button type="primary"  shape="round" style={{ marginLeft: 10}}>
 								Valider
 							</Button>
-						</Popconfirm>
 					</Row>
 				</Card>
 			</Col>

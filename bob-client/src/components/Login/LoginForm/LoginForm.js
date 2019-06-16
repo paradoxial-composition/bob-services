@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
 import { Form, Icon, Input, Button, Checkbox, Col } from 'antd';
-
+// import history from '../../../history';
 
 import axios from 'axios';
 import Loader from '../../Loader';
@@ -11,7 +11,7 @@ const BASE_URL = 'http://localhost:7000';
 const usersURL = '/users';
 
 
-let LoginForm = ({form}) => {
+let LoginForm = ({form, history}) => {
   let [user, setUser] = useState();
 
 	let  handleSubmit = async (e) => {
@@ -21,8 +21,8 @@ let LoginForm = ({form}) => {
         await axios.post(`${BASE_URL}${usersURL}/login`, { email: values.email, password: values.password} ) // req.params.id
           .then((response) => {
             console.log(response.data);
-            setUser(response.data);
-            console.log(user);
+            localStorage.setItem('user', JSON.stringify(response.data));
+            history.push('/');
             // TODO: Redux Store here
           })
           .catch(err => {
@@ -62,18 +62,17 @@ let LoginForm = ({form}) => {
             initialValue: true,
           })(<Checkbox>Remember me</Checkbox>)}
           <a className="login-form-forgot" href="">
-            Forgot password
+            Mot de passe oublié
           </a>
           <Col style={{ textAlign: 'center'}}>
             <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
+              S'Authentifier
             </Button>
           </Col>
         </Form.Item>
-        <Form.Item>
+        <Form.Item >
           <Col style={{ textAlign: 'center'}}>
-            <Link to={'/register'} />
-            <a >register now!</a>
+            <Button type="link" onClick={() => {history.push('/auth/register');}}> Créer un compte</Button>
           </Col>
         </Form.Item>
       </Form>

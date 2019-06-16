@@ -2,7 +2,12 @@ import React from 'react';
 import './Dashboard.scss';
 import { Button, notification, Card, Row, Col, Divider, Empty} from 'antd';
 
-let Dashboard = ({componentItems, services}) => {
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:7000';
+const serviceUnitsURL = '/serviceUnits';
+
+let Dashboard = ({componentItems, services, currentUser}) => {
 
 	let askDisplay= [];
 	let jobDisplay= [];
@@ -14,9 +19,20 @@ let Dashboard = ({componentItems, services}) => {
 		ms: 12
 	}
 
-	const suggestHelp = () => {
+	const suggestHelp = (task) => {
+		
+		console.log('TASK :', task, ' USER ', currentUser._id);
 
-		//TODO: insert Job add by this user call here
+		// task.intrestedUsers.push(currentUser._id);
+
+		// axios.post(`${BASE_URL}${serviceUnitsURL}/${task._id}`, task)
+		// .then((response) => {
+		// 	console.log(response);
+		// })
+		// .catch(err => {
+		// 	console.log(err)
+		// })
+//		.finally(() => setLoading(false))
 
 		const args = {
 			message: 'Propsition d\'aide envoyé.',
@@ -45,7 +61,7 @@ let Dashboard = ({componentItems, services}) => {
 							<spacer/> <b>{item.description}</b>
 						</p>
 						<Row style={{ textAlign: 'center'}}>
-							<Button type="primary" shape="round" icon="plus" onClick={suggestHelp}>
+							<Button type="primary" shape="round" icon="plus" onClick={() => {suggestHelp(item)}}>
 								Aider
 							</Button>
 						</Row>

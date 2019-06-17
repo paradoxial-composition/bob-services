@@ -10,13 +10,13 @@ export default class addServiceUnitsService extends Service {
 	}
 	
 	async handle() {
-		
+		console.log('REQUESTTOO',this.req.body);
 		try {
 			 let _ServiceUnits = (new ServiceUnits).getInstance();
 			(new _ServiceUnits(this.req.body)).save((err, serviceUnit) => {
 				console.log({err, serviceUnit})
 				if (err) {
-					return this.end(err)
+					this.res.send(200)
 				} else {
 					return this.toJson({
 						serviceUnit

@@ -20,8 +20,6 @@ let Dashboard = ({componentItems, services, currentUser}) => {
 	}
 
 	const suggestHelp = (task) => {
-		
-		console.log('TASK :', task, ' USER ', currentUser._id);
 
 		task.intrestedUsers.push(currentUser._id);
 
@@ -43,7 +41,12 @@ let Dashboard = ({componentItems, services, currentUser}) => {
 	};
 
 	services.map((item,index) => {
-		if (item.type === 'ask') {
+		if (item.intrestedUsers.length > 0 && item.userId === currentUser._id) {
+			let helpers = [];
+
+				item.intrestedUsers.map((item, index) => {
+					helpers.push(<p><spacer/> <b>{item}</b></p>)
+				})
 			askDisplay.push(
 				<Col {...colGris}>
 					<Card className="CardItem" key={index}>
@@ -51,6 +54,34 @@ let Dashboard = ({componentItems, services, currentUser}) => {
 							<spacer/> <b>{item.activity}</b>
 						</p>
 						<p>{componentItems.cardItems.creationDate} 
+							<spacer/> <b>{item.creationDate.split('T')[0]}</b>
+						</p>
+						<p>{componentItems.cardItems.user} 
+							<spacer/> <b>{item.userId}</b>
+						</p>
+						<p>{componentItems.cardItems.intrestedUsers} 
+							{helpers}
+						</p>
+						<p>{componentItems.cardItems.description} 
+							<spacer/> <b>{item.description}</b>
+						</p>
+						<Row style={{ textAlign: 'center'}}>
+							<Button type="primary" shape="round" icon="mail" >
+								Contacter
+							</Button>
+						</Row>
+					</Card>
+				</Col>
+			)
+		}
+		if (item.userId != currentUser._id) {
+			jobDisplay.push(
+				<Col {...colGris}>
+					<Card className="CardItem" key={index}>
+						<p>{componentItems.cardItems.activity} 
+							<spacer/> <b>{item.activity}</b>
+						</p>
+						<p>{componentItems.cardItems.creationDate.split('T')[0]} 
 							<spacer/> <b>{item.creationDate}</b>
 						</p>
 						<p>{componentItems.cardItems.user} 
@@ -62,32 +93,7 @@ let Dashboard = ({componentItems, services, currentUser}) => {
 						<Row style={{ textAlign: 'center'}}>
 							<Button type="primary" shape="round" icon="plus" onClick={() => {suggestHelp(item)}}>
 								Aider
-							</Button>
-						</Row>
-					</Card>
-				</Col>
-			)
-		}
-		if (item.type === 'job') {
-			jobDisplay.push(
-				<Col {...colGris}>
-					<Card className="CardItem" key={index}>
-						<p>{componentItems.cardItems.activity} 
-							<spacer/> <b>{item.activity}</b>
-						</p>
-						<p>{componentItems.cardItems.creationDate} 
-							<spacer/> <b>{item.creationDate}</b>
-						</p>
-						<p>{componentItems.cardItems.user} 
-							<spacer/> <b>{item.userId}</b>
-						</p>
-						<p>{componentItems.cardItems.description} 
-							<spacer/> <b>{item.description}</b>
-						</p>
-						<Row style={{ textAlign: 'center'}}>
-							<Button type="primary" shape="round" icon="mail" >
-								Contacter
-							</Button>
+							</Button>							
 						</Row>
 					</Card>
 				</Col>

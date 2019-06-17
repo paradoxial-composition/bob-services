@@ -14,7 +14,7 @@ let DashboardContainer = (props) => {
 		localServices();
 	}, []);
 
-	let [radius, SetRadius] = useState(200000000);
+	let [radius, SetRadius] = useState(2000000);
 	let [loading, setLoading] = useState(false);
 	let [services, setServices] = useState([]);
 
@@ -47,10 +47,11 @@ let DashboardContainer = (props) => {
 			jobTitle: 'Vos voisins ont besoin de vous.',
 			askTitle: 'Vos voisins veulent vous aidez.',
 			cardItems: {
-				activity: 'Activité',
-				creationDate: 'Date de Création',
-				user: 'Creé par',
-				description: 'Description'
+				activity: 'Activité :',
+				creationDate: 'Date de Création :',
+				user: 'Creé par :',
+				intrestedUsers: 'Personnes intéressées :',
+				description: 'Description :'
 			}
 		},
 		// services: [

@@ -8,7 +8,7 @@ export default {
         required: true
     },
     userId: {
-        type: Number
+        type: String
     },
     description: {
         type: String

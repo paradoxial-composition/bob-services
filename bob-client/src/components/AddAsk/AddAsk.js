@@ -6,7 +6,7 @@ import { Form, message, Input, Button, Divider, Row, Col} from 'antd';
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:7000';
-const usersURL = '/users';
+const serviceUnitsURL = '/serviceUnits';
 
 let AddAsk = ({setVisible, form}) => {
   useEffect(() => {
@@ -55,11 +55,12 @@ let AddAsk = ({setVisible, form}) => {
           intrestedUsers: [],
           achieved: false,
           location: {
+            type: 'Point',
             coordinates: [coord.long, coord.lat]
           },
           solved: false
         }
-        await axios.post(`${BASE_URL}${usersURL}/ask`, ask )
+        await axios.post(`${BASE_URL}${serviceUnitsURL}`, ask )
           .then((response) => {
             console.log(response);
           })

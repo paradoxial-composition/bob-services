@@ -3,11 +3,12 @@ import { Schema, model } from 'mongoose';
 class Model {
     constructor(modelSchema) {
         this.init(modelSchema);
+		DB.connect();
     }
 
     async init(modelSchema) {
         this.name = this.constructor.name;
-        // this._instance = model(this.name, new Schema(modelSchema));
+        this.modelSchema = modelSchema;
     }
 
     getName() {
@@ -15,7 +16,11 @@ class Model {
     }
     
     getInstance() {
-        return model(this.name, new Schema(modelSchema));
+        try {
+            return model(this.name);
+        } catch(e) {
+            return model(this.name, new Schema(this.modelSchema));;
+        }
     }
 }
 

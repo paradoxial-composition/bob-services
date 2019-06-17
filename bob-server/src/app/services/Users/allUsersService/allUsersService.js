@@ -14,7 +14,7 @@ export default class loginService extends Service {
 			let _User = (new User).getInstance();
 			_User.find((err, user) => {
 				if (err) {
-					return this.end(err)
+					this.res.send(err)
 				} else {
 					return this.toJson({
 						user

@@ -15,7 +15,7 @@ export default class deleteUserService extends Service {
 			let _User = (new User).getInstance();
 			_User.remove({ _id: this.req.params.id }, (err, res) => { // to Object_Id may be a future probleme
 				if (err) {
-					return this.end(err)
+					this.res.send(err)
 				} else {
 					return this.toJson({
 						res

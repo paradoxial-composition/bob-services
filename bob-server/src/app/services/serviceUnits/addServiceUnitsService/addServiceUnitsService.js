@@ -16,7 +16,7 @@ export default class addServiceUnitsService extends Service {
 			(new _ServiceUnits(this.req.body)).save((err, serviceUnit) => {
 				console.log({err, serviceUnit})
 				if (err) {
-					this.res.send(200)
+					this.res.send(err)
 				} else {
 					return this.toJson({
 						serviceUnit

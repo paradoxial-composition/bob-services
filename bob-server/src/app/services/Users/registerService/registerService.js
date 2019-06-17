@@ -16,7 +16,7 @@ export default class loginService extends Service {
 		(new _User(this.req.body)).save((err, user) => {
 			console.log({err, user})
 			if (err) {
-				return this.end(err)
+				this.res.send(err)
 			} else {
 				return this.toJson({
 					newUser	: {}

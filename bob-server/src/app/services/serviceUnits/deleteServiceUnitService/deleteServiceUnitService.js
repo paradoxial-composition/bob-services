@@ -16,7 +16,7 @@ export default class deleteServiceUnitService extends Service {
 			let _ServiceUnits = (new ServiceUnits).getInstance();
 			_ServiceUnits.remove({ _id: this.req.params.id }, (err, res) => { // to Object_Id may be a future probleme
 				if (err) {
-					return this.end(err)
+					this.res.send(err)
 				} else {
 					return this.toJson({
 						res

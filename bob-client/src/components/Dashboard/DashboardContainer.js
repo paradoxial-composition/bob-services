@@ -12,26 +12,42 @@ let DashboardContainer = (props) => {
 	useEffect(() => {
 		setLoading(true);
 		localServices();
+		getUsers();
 	}, []);
 
 	let [radius, SetRadius] = useState(2000000);
 	let [loading, setLoading] = useState(false);
 	let [services, setServices] = useState([]);
+	let [users, setUsers] = useState([]);
 
 	if(services.length === 0) {
 		setTimeout(() => {
 			setLoading(false)
+			
 		}, 3000);
 		
 	}
+
 
 	async function localServices () {
 		// setLoading(true);
 		await axios.get(`${BASE_URL}${serviceUnitsURL}/local/${radius}`)
 		.then((response) => {
-			console.log(response.data);
 			setServices(response.data);
-			console.log(services);
+			
+		})
+		.catch(err => {
+			console.log(err)
+		})
+		// .finally(() => setLoading(false))
+	}
+
+	async function getUsers () {
+		// setLoading(true);
+		await axios.get(`${BASE_URL}/users`)
+		.then((response) => {
+			setUsers(response.data);
+			
 		})
 		.catch(err => {
 			console.log(err)
@@ -40,6 +56,7 @@ let DashboardContainer = (props) => {
 	}
 	
 	let methods = {
+		allUsers: users.user,
 		 services,
 		currentUser: JSON.parse(localStorage.getItem('user')).user,
 

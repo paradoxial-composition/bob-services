@@ -15,7 +15,7 @@ export default class updateServiceUnitService extends Service {
 			let _ServiceUnits = (new ServiceUnits).getInstance();
 			_ServiceUnits.update({ _id: this.req.params.id }, this.req.body, (err, res) => { // to Object_Id may be a future probleme
 				if (err) {
-					return this.end(err)
+					this.res.send(err)
 				} else {
 					return this.toJson({
 						res

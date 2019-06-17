@@ -14,7 +14,7 @@ export default class serviceUnitsService extends Service {
 			let _ServiceUnits = (new ServiceUnits).getInstance();
 			_ServiceUnits.find((err, serviceUnit) => {
 				if (err) {
-					return this.end(err)
+					this.res.send(err)
 				} else {
 					return this.toJson({
 						serviceUnit

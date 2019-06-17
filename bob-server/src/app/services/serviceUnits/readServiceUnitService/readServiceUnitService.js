@@ -14,7 +14,7 @@ export default class readServiceUnitService extends Service {
 			let _ServiceUnits = (new ServiceUnits).getInstance();
 			_ServiceUnits.findOne({ _id: this.req.params.id }, (err, serviceUnit) => {
 				if (err) {
-					return this.end(err)
+					this.res.send(err)
 				} else {
 					return this.toJson({
 						serviceUnit

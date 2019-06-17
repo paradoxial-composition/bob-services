@@ -81,20 +81,19 @@ let Asks = ({componentItems, services, currentUser, allUsers}) => {
 	services.map((item, index) => {
 		let helpers = [];
 
-				item.intrestedUsers.map((item2, index) => {
-					allUsers.map((item, index) => {
-						if( item._id === item2) {
-							helpers.push(<p><spacer/> <b>{item.lastName + ' ' + item.firstName}</b></p>)
+				item.intrestedUsers.map((item3, index) => {
+					allUsers.map((item2, index) => {
+						if( item2._id === item3) {
+							helpers.push(<p><spacer/> <b>{item2.lastName + ' ' + item2.firstName}</b></p>)
 							return;
-
 						}
 					})
 				})
 
 				let userName = [];
-				allUsers.map((item, index) => {
-					if( item._id === currentUser._id) {
-						userName.push(<p><spacer/> <b>{item.lastName + ' ' + item.firstName}</b></p>)
+				allUsers.map((item2, index) => {
+					if( item2._id === item.userId) {
+						userName.push(<p><spacer/> <b>{item2.lastName + ' ' + item2.firstName}</b></p>)
 						return;
 					}
 				})

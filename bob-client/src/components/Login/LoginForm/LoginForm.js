@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
-import { Form, Icon, Input, Button, Checkbox, Col } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Col, notification } from 'antd';
 // import history from '../../../history';
 
 import axios from 'axios';
@@ -20,9 +20,22 @@ let LoginForm = ({form, history}) => {
       if (!err) {
         await axios.post(`${BASE_URL}${usersURL}/login`, { email: values.email, password: values.password} ) // req.params.id
           .then((response) => {
-            console.log(response.data);
-            localStorage.setItem('user', JSON.stringify(response.data));
-            history.push('/');
+            if ( response.data.user !== null) {
+              localStorage.setItem('user', JSON.stringify(response.data));
+              history.push('/');
+            } else {
+              const args = {
+                message: 'Erreur.',
+                description:
+                  'Vos identifiant son éroné.',
+                duration: 1.5,
+              };
+              notification.open(args);
+
+              history.push('/auth');
+
+            }
+          //  console.log('AAAAAAA USSR, ', response.data.user);
             // TODO: Redux Store here
           })
           .catch(err => {
